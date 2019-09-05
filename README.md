@@ -1,6 +1,6 @@
 # Xip Dns Server
 
-[xip.lhjmmc.cn](https://xip.lhjmmc.cn)
+[https://xip.lhjmmc.cn](https://xip.lhjmmc.cn)
 
 ## Require
 
@@ -10,11 +10,11 @@
 
 ## Useage
 
-1. set a NX record to your domain (such as `xip.lhjmmc.cn`)
+1. set a NS record to your domain (such as `xip.lhjmmc.cn`)
 
 ```
     ...
-    NX      xip.lhjmmc.cn       your_server_domain
+    NS      xip.lhjmmc.cn       your_server_domain(origin.lhjmmc.cn)
     ...
 ```
 
@@ -51,7 +51,7 @@ nslookup xip.lhjmmc.cn
 nslookup 192-168-1-1.xip.lhjmmc.cn
 ```
 
-3. gen certs
+3. generate certs
 
 ```bash
 ## http://acme.sh/
