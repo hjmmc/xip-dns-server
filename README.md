@@ -2,13 +2,19 @@
 
 [xip.lhjmmc.cn](https://xip.lhjmmc.cn)
 
+## Require
+
+- docker
+- docker-compose
+- acme.sh
+
 ## Useage
 
 1. set a NX record to your domain (such as `xip.lhjmmc.cn`)
 
 ```
     ...
-    NX      xip.lhjmmc.cn       your_server_ip
+    NX      xip.lhjmmc.cn       your_server_domain
     ...
 ```
 
@@ -23,7 +29,7 @@ cd xip-dns-server
 docker-compose up -d
 ```
 
-check nsedit is success running [http://your_server_ip:5380](http://your_server_ip:5380)
+check nsedit is success running [http://your_server_ip:5380](http://your_server_ip:5380) default user is admin/admin
 
 add your zone in powerdns by nsedit or curl
 
@@ -86,7 +92,7 @@ server {
 }
 ```
 
-## Thands
+## Thanks
 
 [Mikroways/docker-powerdns](https://github.com/Mikroways/docker-powerdns)
 
