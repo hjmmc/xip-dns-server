@@ -1,0 +1,54 @@
+version: '2.2'
+
+networks:
+  pdns:
+
+volumes:
+  powerdns-db:
+services:
+  pdns:
+    container_name: pdns
+    image: pdns:latest
+    restart: always
+    build: ./docker-powerdns
+    environment:
+      API_KEY: '123456'
+    ports:
+      - '127.0.0.1:5353:53'
+      - '127.0.0.1:5353:53/udp'
+      - '127.0.0.1:5381:8081'
+    networks:
+      - pdns
+    volumes:
+      - powerdns-db:/var/lib/powerdns
+
+  nsedit:
+    container_name: nsedit
+    image: fabrix/nsedit
+    restart: always
+    environment:
+      PDNSAPIIP: "pdns"
+      PDNSAPIPWD: "123456"
+    ports:
+      - '5380:8080'
+    networks:
+      - pdns
+    depends_on: 
+      pdns:
+        condition: service_started
+
+  dns_proxy:
+    container_name: dns_proxy
+    image: dns_proxy:latest
+    restart: always
+    build: ./dns-proxy
+    environment:
+      DNS_SEV: "pdns"
+      DNS_PORT: "53"
+    ports:
+      - '53:53/udp'
+    networks:
+      - pdns
+    depends_on: 
+      pdns:
+        condition: service_started
