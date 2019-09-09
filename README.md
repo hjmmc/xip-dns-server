@@ -99,3 +99,15 @@ server {
 [techguy613/native-dns-packet](https://github.com/techguy613/native-dns-packet)
 
 [acme.sh](https://acme.sh)
+
+
+## Donate
+
+> If you find this project useful, you can buy author a glass of juice 🍹
+
+<details>
+  <summary>Alipay & Wechat</summary>
+    
+  <img src="https://cdn.lhjmmc.cn/alipay.jpg" width="300px"  />
+  <img src="https://cdn.lhjmmc.cn/wx.jpg" width="350px" />
+</details>
