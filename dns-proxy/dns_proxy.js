@@ -11,8 +11,6 @@ console.log('DNS:', DNS_SEV, DNS_PORT)
 const ipReg = /(\d{1,3})[\.-](\d{1,3})[\.-](\d{1,3})[\.-](\d{1,3})/
 
 function proxy(buffer, req, rinfo) {
-	console.log('req', buffer.toString('hex'))
-	console.log('req', JSON.stringify(req))
 	const client = dgram.createSocket('udp4');
 
 	client.on('error', (err) => {
@@ -20,9 +18,7 @@ function proxy(buffer, req, rinfo) {
 		client.close();
 	})
 	client.on('message', (resBuf, fbRinfo) => {
-		console.log("res", resBuf.toString('hex')); //获取响应报文
 		let res = Packet.parse(resBuf)
-		console.log('res', JSON.stringify(res))
 		server.send(resBuf, rinfo.port, rinfo.address, (err) => {
 			err && console.log(err);
 		});
@@ -55,8 +51,6 @@ server.on('message', (buffer, rinfo) => {
 			let len = Packet.write(buf, req)
 			let resBuf = buf.slice(0, len)
 
-			console.log("res1", resBuf.toString('hex')); //获取响应报文
-			console.log('res1', JSON.stringify(req))
 			console.log('res1', ipReg.exec(q.name).slice(1).join('.'))
 			server.send(resBuf, rinfo.port, rinfo.address, (err) => {
 				err && console.log(err);
