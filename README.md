@@ -1,6 +1,7 @@
 # Xip Dns Server
 
-[https://xip.lhjmmc.cn](https://xip.lhjmmc.cn)
+[https://xip.lhjmmc.cn](https://xip.lhjmmc.cn) If the server is down, notify me by email. [haojie.liu@outlook.com](mailto:haojie.liu@outlook.com)
+
 
 ## Require
 
@@ -8,7 +9,7 @@
 - docker-compose
 - acme.sh
 
-## Useage
+## Usage
 
 1. set a NS record to your domain (such as `xip.lhjmmc.cn`)
 
